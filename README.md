@@ -11,7 +11,7 @@ SAPORT = Student's Attempt to Produce an Operation Research Toolkit
 
 Refer to the `example.py` for a quick overview of the API.
 
-The project depends on the fairly recent numpy distribution and Python interpreter (version 3.7 is must have due to the typing). All depedendencies are listed in `requirements.txt`. One can install them with simple `pip install -r requirements.txt`, but using a virtual environment (e.g. virtualenv) is encouraged. 
+The project depends on the fairly recent numpy distribution and Python interpreter (version >= `3.9` is recommended). All depedendencies are listed in `requirements.txt`. One can install them with simple `pip install -r requirements.txt`, but using a virtual environment (e.g. virtualenv) is encouraged ([official tutorial](https://docs.python.org/3/tutorial/venv.html)). 
 
 ## Local Tests
 

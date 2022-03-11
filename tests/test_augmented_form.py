@@ -44,5 +44,5 @@ class TestAugmentation:
         result = solver._basic_initial_tableaux(input)
         assert result.table is not None, f"the initial table in `Tableaux` should not be `None` for model:\n{input}"
         assert result.table.shape == expected.table.shape, f"the initial tableaux has incorrect shape - got: {result.table.shape}, expected: {expected.table.shape} for model:\n{input}"
-        assert not np.equal(result.table, expected.table).all(), f"the initial tablaux is incorrect - got:\n{result.table}expected:\n{expected.table} for model:\n{input}"
+        assert np.allclose(result.table, expected.table), f"the initial tablaux is incorrect - got:\n{result.table}expected:\n{expected.table} for model:\n{input}"
 

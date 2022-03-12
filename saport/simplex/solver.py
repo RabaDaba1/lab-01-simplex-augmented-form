@@ -30,25 +30,26 @@ class Solver:
             _augment_model(model: Model) -> Model:
                 returns an augmented version of the given model 
         """
-        # We don't want to modify the original model
+        # We don't want to modify the original model, so we copy it
         model = deepcopy(original_model)
         # Wa want to have simplified expressions 
-        # (each variable) should occur only once in every expression
+        # each variable should occur only once in every expression
         model.simplify()
 
         # TODO:
         # 1. the augmented model is always a maximizing model
         # - if the objective is minimizing, we have to "invert" it
-        #   tip. Objective class has an "invert" method just for this purpose
-        # 2. all the bounds in the augmented model have to be positive
-        # - every model with a negative bound has to be "inverted"
+        #   tip 1. Objective has `type` attribute storing ObjectiveType (.MIN / .MAX) 
+        #   tip 2. Objective class has an `invert` method just for this purpose
+        # 2. all the bounds in the augmented model have to be positive or equal zero
+        # - every constraint with a negative bound has to be "inverted"
         #   tip. Constraint class has an "invert" method just for this purpose
         # 3. add slack/surplus variables
-        # - every GE constraint needs a new surplus variable, that should be subtracted to its expression
-        # - every LE constraint needs a new slack variable, that should be added to its expression
+        # - every constraint of type ConstraintType.GE needs a new surplus variable, that should be subtracted from its expression
+        # - every constraint of type ConstraintType.LE needs a new slack variable, that should be added to its expression
         # tip. '-' and '+' operators are overloaded for the expression type, so you can literally add/subtract variables
-        # - all constraints in the augmented model should be of type EQ
-          
+        #      in Python you can also use shortcuts "-=" and "+=" ("*=" and "/=" also work, but you don't need them here)
+        # - all constraints in the augmented model should be of type CosntrainType.EQ
         return model  
 
     def _basic_initial_tableaux(self, model: ssmod.Model) -> sstab.Tableaux:
@@ -59,8 +60,8 @@ class Solver:
         # 2) every other row consists of the coefficitients in the corresponding constraints, 
         #    don't forget to put the constraint bound in the last column
         # tips.
-        # - to invert coefficients in the expression, one can multiply it by "-1"
-        # - to get coefficients one can use the coefficients method in the expression object 
+        # - to invert coefficients in the expression, one can multiply it by `-1``
+        # - to get coefficients one can use the `coefficients` method in the expression object 
         table = None
         return sstab.Tableaux(model, table)
 

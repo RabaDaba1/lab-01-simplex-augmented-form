@@ -35,7 +35,7 @@ def assignment_3():
     # - variables
     # - constraints
     # - objective
-    # tip. value at optimum: 0.0
+    # tip. value at optimum: 21.8181818
     return model
 
 def assignment_4():

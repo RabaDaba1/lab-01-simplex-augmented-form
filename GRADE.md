@@ -7,8 +7,8 @@ There still exist some issues that should be addressed before the deadline: **20
 <details><summary>Change constraints bounds to nonnegative &gt;&gt; all constraints  should have changed type after augmentation (GE/LE -&gt; EQ)</summary></details>
 <details><summary>Add extra variables &gt;&gt; augmented model has an incorrect number of variables</summary></details>
 <details><summary>Tableaux &gt;&gt; tableaux should exist and consist of a numpy array</summary></details>
-<details><summary>Assignment 1 &gt;&gt; &#x27;Expression&#x27; object has no attribute &#x27;bound&#x27;</summary></details>
-<details><summary>Assignment 2 &gt;&gt; model Assignment 2 has an incorrect amount of variables</summary></details>
+<details><summary>Assignment 1 &gt;&gt; Tested code raises UnknownException in assignment.py:29</summary></details>
+<details><summary>Assignment 2 &gt;&gt; Tested code raises TypeError in assignment.py:57</summary></details>
 <details><summary>Assignment 3 &gt;&gt; model Assignment 3 has an incorrect amount of variables</summary></details>
 <details><summary>Assignment 4 &gt;&gt; model Assignment 4 has an incorrect amount of variables</summary></details>
 

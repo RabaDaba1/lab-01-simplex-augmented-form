@@ -25,6 +25,8 @@ def assignment_1():
 
     model.maximize(2 * x1 + x2 + 3 * x3)
 
+    mode.solve()
+
     return model
 
 def assignment_2():
@@ -36,6 +38,20 @@ def assignment_2():
     # - constraints
     # - objective
     # tip. value at optimum: 10800.0
+
+    s1 = model.create_variable("s1")
+    s2 = model.create_variable("s2")
+
+    p1 = 0.8*s1 + 0.6*s2
+    p2 = 2.4*s1 + 0.6*s2
+    p3 = 0.9*s1 + 0.3*s2
+    p4 = 0.4*s1 + 0.3*s2
+
+    model.add_constraint(s1 >= 1200)
+    model.add_constraint(s2 >= 600)
+
+
+
     return model
 
 def assignment_3():

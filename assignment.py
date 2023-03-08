@@ -26,7 +26,7 @@ def assignment_1():
     model.maximize(2 * x1 + x2 + 3 * x3)
 
     print(model)
-    mode.solve()
+    model.solve()
 
     print(model)
 

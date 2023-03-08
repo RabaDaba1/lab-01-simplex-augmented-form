@@ -25,7 +25,10 @@ def assignment_1():
 
     model.maximize(2 * x1 + x2 + 3 * x3)
 
+    print(model)
     mode.solve()
+
+    print(model)
 
     return model
 
@@ -42,15 +45,21 @@ def assignment_2():
     s1 = model.create_variable("s1")
     s2 = model.create_variable("s2")
 
-    p1 = 0.8*s1 + 0.6*s2
-    p2 = 2.4*s1 + 0.6*s2
-    p3 = 0.9*s1 + 0.3*s2
-    p4 = 0.4*s1 + 0.3*s2
+    p1 = model.create_variable("p1")
+    p2 = model.create_variable("p2")
+    p3 = model.create_variable("p3")
+    p4 = model.create_variable("p4")
 
+    
     model.add_constraint(s1 >= 1200)
     model.add_constraint(s2 >= 600)
 
+    model.add_constraint(p1 = 0.8*s1 + 0.6*s2)
+    model.add_constraint(p2 = 2.4*s1 + 0.6*s2)
+    model.add_constraint(p3 = 0.9*s1 + 0.3*s2)
+    model.add_constraint(p4 = 0.4*s1 + 0.3*s2)
 
+    model.minimize(9.6*p1 + 14.4 * p2 + 10.8*p3 + 7.2*p4)
 
     return model
 

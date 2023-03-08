@@ -61,6 +61,20 @@ def assignment_3():
     # - constraints
     # - objective
     # tip. value at optimum: 21.8181818
+    
+    steaks = model.create_variable("steaks")
+    potatoes = model.create_variable("potatoes")
+
+    carbohydrates = 5*steaks + 15*potatoes
+    protein = 20*steaks + 5*potatoes
+    fats = 15*steaks + 2*potatoes
+
+    model.add_constraint(carbohydrates >= 50)
+    model.add_constraint(protein >= 40)
+    model.add_constraint(fats >= 60)
+
+    model.minimize(8*steaks + 4*potatoes)
+
     return model
 
 def assignment_4():

@@ -86,4 +86,20 @@ def assignment_4():
     # - constraints
     # - objective
     # tip. value at optimum: 4000.0
+
+    cut_1 = model.create_variable("1x105_1x75")
+    cut_2 = model.create_variable("1x105_2x35")
+    cut_3 = model.create_variable("5x35")
+    cut_4 = model.create_variable("1x75_3x35")
+    cut_5 = model.create_variable("2x75_1x35")
+
+    cout_105 = cut_1 + cut_2
+    cout_75 = cut_1 + cut_4 + 2*cut_5
+    cout_35 = 2*cut_2 + 5*cut_3 + 3*cut_4 + cut_5
+
+    model.add_constraint(cout_105 >= 150)
+    model.add_constraint(cout_75 >= 200)
+    model.add_constraint(cout_35 >= 150)
+    
+    model.minimize(20*cut_1 + 25*cut_2 + 25*cut_3 + 20*cut_4 + 15*cut_5)
     return model

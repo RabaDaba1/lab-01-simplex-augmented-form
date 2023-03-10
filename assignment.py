@@ -71,7 +71,7 @@ def assignment_3():
 
     model.add_constraint(carbohydrates >= 50)
     model.add_constraint(protein >= 40)
-    model.add_constraint(fats >= 60)
+    model.add_constraint(fats <= 60)
 
     model.minimize(8*steaks + 4*potatoes)
 

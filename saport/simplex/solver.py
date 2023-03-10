@@ -50,6 +50,21 @@ class Solver:
         # tip. '-' and '+' operators are overloaded for the expression type, so you can literally add/subtract variables
         #      in Python you can also use shortcuts "-=" and "+=" ("*=" and "/=" also work, but you don't need them here)
         # - all constraints in the augmented model should be of type CosntrainType.EQ
+
+        if model.objective.type == sseobj.ObjectiveType.MIN:
+            model.invert()
+
+        for i, constraint in enumerate(model.constraints):
+            if constraint.bound < 0:
+                constraint.invert()
+            
+            if constraint.type == ssecon.ConstraintType.GE:
+                constraint.expression -= model.create_variable(f's{i}')
+            elif constraint.type == ssecon.ConstraintType.LE:
+                constraint.expression += model.create_variable(f's{i}')
+
+            constraint.type = ssecon.ConstraintType.EQ
+
         return model  
 
     def _basic_initial_tableaux(self, model: ssmod.Model) -> sstab.Tableaux:

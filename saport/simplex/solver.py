@@ -52,7 +52,7 @@ class Solver:
         # - all constraints in the augmented model should be of type CosntrainType.EQ
 
         if model.objective.type == sseobj.ObjectiveType.MIN:
-            model.invert()
+            model.objective.invert()
 
         for i, constraint in enumerate(model.constraints):
             if constraint.bound < 0:

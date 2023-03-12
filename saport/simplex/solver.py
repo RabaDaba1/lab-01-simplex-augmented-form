@@ -79,11 +79,11 @@ class Solver:
         # - to get coefficients one can use the `coefficients` method in the expression object 
         table = np.zero((len(model.constraints)+1, len(model.variables)+1))
 
-        for col, coefficient in enumerate(model.objective.expression.coefficients()):
+        for col, coefficient in enumerate(model.objective.expression.coefficients(model)):
             table[0][col] = -coefficient
 
         for row in range(len(model.constraints)):
-            for col, coefficient in enumerate(model.constraints[row].expression.coefficients()):
+            for col, coefficient in enumerate(model.constraints[row].expression.coefficients(model)):
                 table[row+1][col] = coefficient
 
         return sstab.Tableaux(model, table)

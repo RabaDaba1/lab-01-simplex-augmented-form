@@ -85,7 +85,7 @@ class Solver:
         for row in range(len(model.constraints)):
             for col, coefficient in enumerate(model.constraints[row].expression.coefficients(model)):
                 table[row+1][col] = coefficient
-            table[row + 1][-1] = model.constraints[row].bound
+            table[row+1][-1] = model.constraints[row].bound
 
         return sstab.Tableaux(model, table)
 
